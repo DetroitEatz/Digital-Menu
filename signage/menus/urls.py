@@ -7,8 +7,9 @@ from signage.menus.views import (
 )
 
 app_name = "menus"
+
 urlpatterns = [
     path("", view=Menu_list_view, name="list"),
-    path("~update/(?P<pk>[\w-]+)$", view=Menu_update_view, name="update"),
+    path("~update/<id>/", view=Menu_update_view, name="update"),
     path("<id>/", view=Menu_detail_view, name="detail"),
 ]

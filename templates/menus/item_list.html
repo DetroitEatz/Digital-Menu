@@ -3,7 +3,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="5; URL=http://localhost:8000">
     <title>Title</title>
+    <link rel="stylesheet" href="{%  static "/css/bootstrap.min.css" %}" crossorigin="anonymous">
+    <script>
+
+        function sendContactForm(){
+        }
+
+        $('#item_update').submit(function () {
+         sendContactForm();
+         return false;
+        });
+    </script>
 </head>
 <body>
     <table>
@@ -21,12 +33,27 @@
             </td>
             <td>{{ item.name }}</td>
             <td>
-                <form>
+                <form id="item_update">
+
+                    <button type="button" class="btn btn-success">Success</button>
+
+                </form>
+
+            </td>
+            <td>
+                <form id="item_update">
+                    <button type="button" class="btn btn-warning">Warning</button>
                     {{ item.id }}
                 </form>
 
             </td>
+            <td>
+                <form id="item_update">
+                    <button type="button" class="btn btn-danger">Danger</button>
+                    {{ item.id }}
+                </form>
 
+            </td>
         </tr>
         {% endfor %}
     </table>

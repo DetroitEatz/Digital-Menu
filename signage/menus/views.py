@@ -9,16 +9,17 @@ from signage.menus.models import Item
 
 
 def menu_view(request, id):
+    print("menu_view")
     menu = get_object_or_404(Menu, pk=id)
 
     if menu.template and menu.background:
-        items = get_list_or_404(Item, menu=id)
-        return render(request, menu.template.url, context={'background': menu.background, 'items': items})
+        items = Item.objects.all().filter(pk=id)
+        return render(request, menu.template.url.replace('/media/', ""), context={'background': menu.background, 'items': items})
 
     template = "menus/default.html"
     if menu.background:
+        print("show default")
         return render(request, template, context={'background': menu.background})
-
 
 
 class MenuDetailView(DetailView):

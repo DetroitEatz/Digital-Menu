@@ -1,22 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <style>
+        body {
+            height: 100%;
+            background: url('/media/{{ background }}') no-repeat center center fixed;
+            background-size: cover;
+        }
+    </style>
 </head>
 <body>
-<table>
-        {% for item in items %}
-        <tr>
-            <td>{{ item.name }}</td>
-            <td>
-                <form>
-                    {{ item.id }}
-                </form>
-
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
 </body>
 </html>

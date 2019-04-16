@@ -84,7 +84,7 @@ ROOT_URLCONF = 'signage.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(APPS_DIR, 'templates'), os.path.join(APPS_DIR, 'media/templates')],
+        'DIRS': [os.path.join(APPS_DIR, 'media'), os.path.join(APPS_DIR, 'templates')],
         'OPTIONS': {
             "loaders": [
                 "django.template.loaders.filesystem.Loader",

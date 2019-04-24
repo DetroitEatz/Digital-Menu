@@ -20,6 +20,11 @@ from django.urls import include, path
 from signage.dashboard.views import Dashboard_list_view
 from signage.menus.views import menu_view
 
+
+admin.site.site_header = 'Detroit Eats Menu Administration'                    # default: "Django Administration"
+admin.site.index_title = 'Detroit Eats'                 # default: "Site administration"
+admin.site.site_title = 'Detroit Eats Menu Administration' # default: "Django site admin"
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('menu/<id>/', view=menu_view, name="menu_display"),

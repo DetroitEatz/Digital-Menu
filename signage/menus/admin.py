@@ -5,8 +5,17 @@ from signage.menus.models import Menu, Item
 from signage.menus.forms import MenuChangeForm, MenuCreationForm, ItemChangeForm, ItemCreationForm
 
 
+class CSSAdminMixin():
+    """
+    This is a one-time mclass used to override the overall admin css
+    """
+    class Media:
+        css = {
+            'all': ('css/admin.css',),
+        }
+
 @admin.register(Menu)
-class MenuAdmin(admin.ModelAdmin):
+class MenuAdmin(admin.ModelAdmin, CSSAdminMixin):
 
     form = MenuChangeForm
     add_form = MenuCreationForm
@@ -23,3 +32,5 @@ class ItemAdmin(admin.ModelAdmin):
     #fieldsets = (("User", {"fields": ("name",)}),) + auth_admin.UserAdmin.fieldsets
     list_display = ["name"]
     search_fields = ["name"]
+
+

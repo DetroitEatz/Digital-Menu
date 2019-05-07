@@ -14,4 +14,5 @@ class Screen(BaseModel):
     name = models.CharField(max_length=100, null=True)
     menu = models.ForeignKey(Menu, null=True, blank=True, on_delete=models.SET_NULL)
     is_external = models.BooleanField(default=True)
+    is_vertical = models.BooleanField(default=True)
 

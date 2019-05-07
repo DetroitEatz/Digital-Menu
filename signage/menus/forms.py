@@ -10,28 +10,28 @@ class MenuChangeForm(ModelForm):
 
     class Meta:
         model = Menu
-        fields = ['name', 'template', 'background']
+        fields = ['name', 'template']
 
 
 class MenuCreationForm(ModelForm):
 
     class Meta:
         model = Menu
-        fields = ['name', 'template', 'background']
+        fields = ['name', 'template']
 
 
 class ItemChangeForm(ModelForm):
 
     class Meta:
         model = Item
-        fields = ["identifier", "name", "description", "price", "image", "status", "has_status", "menu"]
+        fields = ["identifier", "name", "image", "status", "has_status", "menu"] #"description", "price",
 
 
 class ItemCreationForm(ModelForm):
 
     class Meta:
         model = Item
-        fields = ["identifier", "name", "description", "price", "image", "status", "has_status", "menu"]
+        fields = ["identifier", "name", "image", "status", "has_status", "menu"] #"description", "price",
 
 
 

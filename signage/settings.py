@@ -14,24 +14,16 @@ import os
 
 import environ
 
-ROOT_DIR = (
-    environ.Path(__file__) - 3
-)  # (menus/config/settings/base.py - 3 = menus/)
-APPS_DIR = ROOT_DIR.path("menus")
-
+BASE_DIR = (
+    environ.Path(os.path.dirname(os.path.abspath(__file__))) - 1
+)
+#BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 env = environ.Env()
 
 READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=False)
 if READ_DOT_ENV_FILE:
     # OS environment variables take precedence over variables from .env
-    env.read_env(str(ROOT_DIR.path(".env")))
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
+    env.read_env(str(BASE_DIR.path(".env")))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'n7a$+=4-ib+4lt2sakmwg&n5a0s_uxzee*ga%_6w5)sefpyjla'
@@ -64,6 +56,7 @@ LOCAL_APPS = [
     "signage.screens.apps.ScreenAppConfig",
     "signage.menus.apps.MenusAppConfig",
     "signage.dashboard.apps.DashboardAppConfig",
+    "signage.templates.apps.TemplatesAppConfig"
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -84,7 +77,7 @@ ROOT_URLCONF = 'signage.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(APPS_DIR, 'media'), os.path.join(APPS_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'media'), os.path.join(BASE_DIR, 'templates')],
         'OPTIONS': {
             "loaders": [
                 "django.template.loaders.filesystem.Loader",
@@ -113,7 +106,7 @@ DATABASES = {
     #"default": env.db("DATABASE_URL", default="postgres:///menus")
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR , 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR , 'Digital_Menu_DB.sqlite3'),
     }
 }
 
@@ -160,11 +153,11 @@ USE_TZ = True
 # STATIC
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#static-root
-STATIC_ROOT = str(ROOT_DIR("staticfiles"))
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # https://docs.djangoproject.com/en/dev/ref/settings/#static-url
 STATIC_URL = "/static/"
 # https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
-STATICFILES_DIRS = [str(APPS_DIR.path("static"))]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 # https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#staticfiles-finders
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
@@ -175,6 +168,6 @@ STATICFILES_FINDERS = [
 # MEDIA
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#media-root
-MEDIA_ROOT = str(APPS_DIR("media"))
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/dev/ref/settings/#media-url
 MEDIA_URL = "/media/"

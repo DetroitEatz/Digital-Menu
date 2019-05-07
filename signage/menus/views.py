@@ -5,7 +5,7 @@ from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.views.generic import DetailView, ListView, RedirectView, UpdateView
 
 from signage.menus.models import Menu
-from signage.menus.models import Item
+from signage.menus.models import Slot
 
 
 def menu_view(request, id):
@@ -79,47 +79,47 @@ class MenuRedirectView(RedirectView):
 Menu_redirect_view = MenuRedirectView.as_view()
 
 
-class ItemDetailView(DetailView):
+class SlotDetailView(DetailView):
 
-    model = Item
+    model = Slot
     slug_field = "name"
     slug_url_kwarg = "name"
 
 
-Item_detail_view = ItemDetailView.as_view()
+Slot_detail_view = SlotDetailView.as_view()
 
 
-class ItemListView(ListView):
+class SlotListView(ListView):
 
-    model = Item
+    model = Slot
     slug_field = "name"
     slug_url_kwarg = "name"
 
 
-Item_list_view = ItemListView.as_view()
+Slot_list_view = SlotListView.as_view()
 
 
-class ItemUpdateView(UpdateView):
+class SlotUpdateView(UpdateView):
 
-    model = Item
+    model = Slot
     fields = ["name"]
 
     def get_success_url(self):
         return reverse("Menus:detail", kwargs={"name": self.request.Menu.Menuname})
 
     def get_object(self):
-        return Item.objects.get(name=self.request.Item.name)
+        return Slot.objects.get(name=self.request.Slot.name)
 
 
-Item_update_view = ItemUpdateView.as_view()
+Slot_update_view = SlotUpdateView.as_view()
 
 
-class ItemRedirectView(RedirectView):
+class SlotRedirectView(RedirectView):
 
     permanent = False
 
     def get_redirect_url(self):
-        return reverse("Menus:detail", kwargs={"name": self.request.Item.name})
+        return reverse("Menus:detail", kwargs={"name": self.request.Slot.name})
 
 
-Item_redirect_view = ItemRedirectView.as_view()
+Slot_redirect_view = SlotRedirectView.as_view()

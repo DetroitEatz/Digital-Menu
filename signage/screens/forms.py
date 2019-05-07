@@ -9,12 +9,12 @@ from signage.screens.models import Screen
 class ScreenChangeForm(ModelForm):
     class Meta:
         model = Screen
-        fields = ['name', 'menu', 'is_external']
+        fields = ['name', 'menu', 'is_external', 'is_vertical']
 
 
 class ScreenCreationForm(ModelForm):
 
     class Meta:
         model = Screen
-        fields = ['name', 'menu', 'is_external']
+        fields = ['name', 'menu', 'is_external', 'is_vertical']
 

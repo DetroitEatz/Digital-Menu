@@ -9,18 +9,43 @@ Installation
 4. Unzip the downloaded file by double-clicking and waiting for the zip file to open.
 5. There will now be a directory with the same name as the zip file, IE: likely named **Digital-Menu**.
 6. Navigate into the **Digital-Menu** directory you just created. Double-click on the file named **install.command**.
-7. In the terminal window that appears, type answers to the prompts. For example, you will be asked:
+7. After installation has completed, you can close the install window.
+8. Double-click on the file named **run.command** to start the application. 
+9. Navigate to `http://localhost:8000/admin` and sign in with the using the default username (`admin`) and password (`admin123`)
+10. After setting up Screens, Menus, Slots, and Templates in the admin area, navigate to `http://localhost:8000/` to see the dashboard used to change menu status.
 
-		a. To create an administrator user. One option would be to name this user "admin". 
-		b. For an email address for your administrator user.
-		c. For a password for your administrator user.
-8. Upon successful installation, double-click the file named **run.command** to begin the application.
-9. Navigate to `http://localhost:8000` in a browser to see the dashboard page. Navigate to `http://localhost:8000/admin` and sign in with the admin user you just created in order to begin the setup process. 
+Running
+-------
+In the event the application dies (power outage, etc), simply start the application again by double-clicking the **run.command** file. 
+
+From each physical display you'll need to connect to this application via a browser. If you have created a menu named "Menu1" that is meant to display on a particular display, you'll navigate to `http://<hostname>:8000/menu1` where <hostname> is the name of the hosting Mac Mini. 
+
+Within the store, there will need to be a display connected to `http://localhost:8000/` where the status of menus can be seen and changed as needed. 
+  
+  
+Admin capabilities
+------------------
+
+* Create Screens
+* Create Menus
+* Associate Menus to Screens
+* Upload new Templates
+* Associate Templates to Menus
+* Set up Slots for a Menu
 
 
+General Capabilities
+--------------------
+* Change the status of items on display. 
 
-Basic Commands
---------------
+
+Technical Information
+=====================
+
+This is a standard Django / Python application that uses SqlLite as an embedded database. It ships with an existing database and page templates. 
+
+Command Line Basics
+-----------------------
 
 Setting Up Your Users
 
@@ -32,7 +57,11 @@ Setting Up Your Users
 
     $ python manage.py collectstatic
     
-* To create database changes
+* To gather database changes
+
+    $ python manage.py makemigrations
+    
+* To apply database changes
 
     $ python manage.py migrate
     
@@ -40,16 +69,24 @@ Setting Up Your Users
 
     $ python manage.py runserver
     
-Admin capabilities
-------------------
+Understanding the Data Models
+-----------------------------
 
-* Create Displays
-* Create Menus
-* Associate Menus to Displays
+**Screen**
+ A Screen represents a physical display. For future reference, we've included boolean fields for whether a display is inside or outside the building and whether it is orientated vertically.
+ 
+**Menu**
+ A menu represents the content to be displayed on a physical Screen. It has a template and may have a background image.
+ 
+**Slot**
+ A Slot represents a part of a Menu in which we want to have a visible status indicator. It can also have an image.
+ 
+**Template**
+A Template represents the visual layout that will be used by a Menu. It is the link to an actual html page. This is not to be confused with Django's built-in templates.  
+  
+  
+Support
+-------
 
-General Capabilities
---------------------
-* Change the status of items on display. 
-
-
-
+support@mercenarytech.com
+  

@@ -4,6 +4,12 @@ from signage.menus.models import Menu
 
 
 class Screen(BaseModel):
+    """
+    A Screen represents a physical display. For future reference, we've included boolean fields
+    for whether a display is inside or outside the building and whether it is orientated vertically.
+
+    The associated Menu is what will be displayed on the screen.
+    """
 
     def __unicode__(self):
         return self.name

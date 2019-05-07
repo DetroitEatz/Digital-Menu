@@ -1,8 +1,8 @@
 from django.contrib import admin
 
-from signage.menus.models import Menu, Item
+from signage.menus.models import Menu, Slot
 
-from signage.menus.forms import MenuChangeForm, MenuCreationForm, ItemChangeForm, ItemCreationForm
+from signage.menus.forms import MenuChangeForm, MenuCreationForm, SlotChangeForm, SlotCreationForm
 
 
 class CSSAdminMixin():
@@ -24,11 +24,11 @@ class MenuAdmin(admin.ModelAdmin, CSSAdminMixin):
     search_fields = ["name"]
 
 
-@admin.register(Item)
-class ItemAdmin(admin.ModelAdmin):
+@admin.register(Slot)
+class SlotAdmin(admin.ModelAdmin):
 
-    form = ItemChangeForm
-    add_form = ItemCreationForm
+    form = SlotChangeForm
+    add_form = SlotCreationForm
     #fieldsets = (("User", {"fields": ("name",)}),) + auth_admin.UserAdmin.fieldsets
     list_display = ["name"]
     search_fields = ["name"]

@@ -10,12 +10,12 @@ class TemplateChangeForm(ModelForm):
 
     class Meta:
         model = Template
-        fields = ['name', 'template', 'background']
+        fields = ['name', 'template']
 
 
 class TemplateCreationForm(ModelForm):
 
     class Meta:
         model = Template
-        fields = ['name', 'template', 'background']
+        fields = ['name', 'template']
 

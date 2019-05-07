@@ -14,8 +14,8 @@ class Menu(BaseModel):
     class Meta:
         db_table = "menus"
 
-    name = models.CharField(max_length=255, null=True)
-    template = models.ForeignKey(Template, null=True, on_delete=models.SET_NULL)
+    name = models.CharField(max_length=255, null=False, blank=False)
+    template = models.ForeignKey(Template, null=False, on_delete=models.SET_NULL)
     #template = models.FileField(upload_to='menus/templates/', null=True, blank=True)
     background = models.FileField(upload_to='menus/backgrounds/', null=True, blank=True)
 
@@ -30,7 +30,7 @@ class Slot(BaseModel):
     class Meta:
         db_table = "menu_slots"
 
-    name = models.TextField(null=True)
-    image = models.FileField(upload_to='menus/images/', null=True)
+    name = models.CharField(max_length=255, null=False, blank=False)
+    image = models.FileField(upload_to='menus/images/', null=True, blank=True)
     status = models.PositiveSmallIntegerField(default=1, validators=[MaxValueValidator(3), MinValueValidator(1)]) # 1 = good, 2 = running low 3 = I'm out
-    menu = models.ForeignKey(Menu, null=True, on_delete=models.SET_NULL)
+    menu = models.ForeignKey(Menu, null=False, on_delete=models.SET_NULL)

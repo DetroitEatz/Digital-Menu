@@ -32,6 +32,11 @@ class MenuCreationForm(ModelForm):
 class SlotChangeForm(ModelForm):
     # status --> 1 = good, 2 = running low 3 = I'm out
 
+    def __init__(self, *args, **kwargs):
+        super(SlotChangeForm, self).__init__(*args, **kwargs)
+        self.fields['menu'].choices = [(o.id, o.name) for o in Menu.objects.all()]
+
+
     class Meta:
         model = Slot
         fields = ["name", "image", "status", "menu"]
@@ -39,6 +44,10 @@ class SlotChangeForm(ModelForm):
 
 class SlotCreationForm(ModelForm):
     #status --> 1 = good, 2 = running low 3 = I'm out
+
+    def __init__(self, *args, **kwargs):
+        super(SlotCreationForm, self).__init__(*args, **kwargs)
+        self.fields['menu'].choices = [(o.id, o.name) for o in Menu.objects.all()]
 
     class Meta:
         model = Slot

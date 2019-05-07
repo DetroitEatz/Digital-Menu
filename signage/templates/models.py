@@ -13,6 +13,6 @@ class Template(BaseModel):
     class Meta:
         db_table = "templates"
 
-    name = models.CharField(max_length=255, null=True)
-    template = models.FileField(upload_to='templates/', null=True, blank=True)
+    name = models.CharField(max_length=255, null=False, blank=False)
+    template = models.FileField(upload_to='templates/', null=False, blank=False)
 

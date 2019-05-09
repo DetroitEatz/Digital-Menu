@@ -9,17 +9,15 @@ from signage.menus.models import Slot
 
 
 def menu_view(request, id):
-    print("menu_view")
     menu = get_object_or_404(Menu, pk=id)
 
-    if menu.template and menu.background:
-        items = Item.objects.all().filter(pk=id)
-        return render(request, menu.template.url.replace('/media/', ""), context={'background': menu.background, 'items': items})
-
-    template = "menus/default.html"
-    if menu.background:
-        print("show default")
+    if not menu.template:
+        template = "menus/default.html"
         return render(request, template, context={'background': menu.background})
+    else:
+        slots = Slot.objects.filter(menu=id).all()
+        print( menu.template.template.url)
+        return render(request, menu.template.template.url.replace('/media/', ""), context={'background': menu.background, 'slots': slots})
 
 
 class MenuDetailView(DetailView):

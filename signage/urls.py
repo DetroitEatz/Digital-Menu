@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from django.urls import include, path
 from signage.dashboard.views import Dashboard_list_view
+from signage.dashboard.views import status_view
 from signage.menus.views import menu_view
 
 
@@ -29,5 +30,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('menu/<id>/', view=menu_view, name="menu_display"),
     path('menus/', include("signage.menus.urls")),
+    path('status/', view=status_view, name="status"),
     path("", view=Dashboard_list_view, name="home"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

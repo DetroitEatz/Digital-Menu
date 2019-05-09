@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            height: 100%;
+            background: url('/media/{{ background }}') no-repeat center center fixed;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+<div class="row">
+  <div class="col">
+      {% for slot in slots%}
+            {% if slot.status == 0 %}
+                <img src="{% static "images/green.png" %}" height="20" length="20" alt="green">
+            {% elif slot.status == 1 %}
+                <img src="{% static "images/yellow.png" %}" height="20" length="20" alt="yellow">
+            {% elif slot.status == 2 %}
+                <img src="{% static "images/red.png" %}" height="20" length="20" alt="red">
+            {% endif %}
+      {% endfor %}
+
+  </div>
+  <div class="col">
+       {% for slot in slots%}
+            {% if slot.status == 0 %}
+                <img src="{% static "images/green.png" %}" height="20" length="20" alt="green">
+            {% elif slot.status == 1 %}
+                <img src="{% static "images/yellow.png" %}" height="20" length="20" alt="yellow">
+            {% elif slot.status == 2 %}
+                <img src="{% static "images/red.png" %}" height="20" length="20" alt="red">
+            {% endif %}
+      {% endfor %}
+  </div>
+</div>
+</body>
+</html>

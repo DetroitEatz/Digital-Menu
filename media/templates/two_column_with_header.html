@@ -12,11 +12,38 @@
 <body>
 <div class="container">
   <div class="jumbotron">
-    {% slot1 %}
+        {% if slots.0.status == "0" %}
+                <img src="{% static "images/green.png" %}" height="20" length="20" alt="green">
+            {% elif slots.0.status == 1 %}
+                <img src="{% static "images/yellow.png" %}" height="20" length="20" alt="yellow">
+            {% elif slots.0.status == 2 %}
+                <img src="{% static "images/red.png" %}" height="20" length="20" alt="red">
+            {% endif %}
   </div>
   <div class="row">
-  <div class="col">{% slot2 %}</div>
-  <div class="col">{% slot3 %}</div>
+  <div class="col">
+       {% for slot in slots%}
+            {% if slot.status == 0 %}
+                <img src="{% static "images/green.png" %}" height="20" length="20" alt="green">
+            {% elif slot.status == 1 %}
+                <img src="{% static "images/yellow.png" %}" height="20" length="20" alt="yellow">
+            {% elif slot.status == 2 %}
+                <img src="{% static "images/red.png" %}" height="20" length="20" alt="red">
+            {% endif %}
+      {% endfor %}
+
+  </div>
+  <div class="col">
+       {% for slot in slots%}
+            {% if slot.status == 0 %}
+                <img src="{% static "images/green.png" %}" height="20" length="20" alt="green">
+            {% elif slot.status == 1 %}
+                <img src="{% static "images/yellow.png" %}" height="20" length="20" alt="yellow">
+            {% elif slot.status == 2 %}
+                <img src="{% static "images/red.png" %}" height="20" length="20" alt="red">
+            {% endif %}
+      {% endfor %}
+  </div>
 </div>
 </div>
 </body>

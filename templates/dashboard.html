@@ -28,6 +28,8 @@
 </head>
 <body>
     <img src="{% static "images/logo.png" %}" alt="logo" height="100" />
+    <div style="height:20px;">
+    </div>
 
     <div>
 
@@ -51,7 +53,11 @@
                         {% elif slot.status == 2 %}
                             <img src="{% static "images/red.png" %}" height="20" length="20" alt="red">
                         {% endif %}
-                    {{ slot.name }}
+                        {% if slot.image %}
+                            <img src="/media/{{ slot.image }}" height="50" length="50">
+                        {% else %}
+                            {{ slot.name }}
+                        {% endif %}
                     </td>
                     <td>
                         <form id="{{ menu.id  }}{{ slot.id }}">

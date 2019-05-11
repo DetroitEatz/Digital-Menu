@@ -18,7 +18,7 @@ class DashboardListView(ListView):
     slug_url_kwarg = "name"
 
     context_object_name = 'menus'
-    slots =  Slot.objects.order_by('menu').all()
+    slots =  Slot.objects.order_by('menu').values_list('menu', flat=True)
     queryset = Menu.objects.filter(id__in=slots).all()
     template_name = 'dashboard.html'
 

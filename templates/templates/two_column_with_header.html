@@ -2,23 +2,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="5">
     <style>
-        body {
-            height: 100%;
-            background: url('/media/{{ background }}') no-repeat center center fixed;
-            background-size: cover;
+
+        html {
+          background-image:url(/media/{{ background }});
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          background-size: cover;
+        }
+
+        .overlay {
+            width: 10%;
+            position: absolute;
+            /*bottom: 0;*/
+            /*background: rgb(0, 0, 0);
+            background: rgba(0, 0, 0, 0.5);
+            color: #f1f1f1;*/
+            transition: .5s ease;
+            opacity:0;
+            color: white;
+            font-size: 20px;
+            padding: 20px;
+            text-align: center;
+            opacity: 1;
         }
     </style>
 </head>
 <body>
+
 <div class="container">
-  <div class="jumbotron">
-    {% slot1 %}
+  <div class="overlay" style="top: 420px;left:40%;">
+            {% if slots.0.status == 0 %}
+                <img src="{% static "images/green.png" %}" height="20" length="20" alt="green">
+            {% elif slots.0.status == 1 %}
+                <img src="{% static "images/yellow.png" %}" height="20" length="20" alt="yellow">
+            {% elif slots.0.status == 2 %}
+                <img src="{% static "images/red.png" %}" height="20" length="20" alt="red">
+            {% endif %}
   </div>
-  <div class="row">
-  <div class="col">{% slot2 %}</div>
-  <div class="col">{% slot3 %}</div>
+  <div class="overlay" style="top: 560px;left:40%;">
+            {% if slots.1.status == 0 %}
+                <img src="{% static "images/green.png" %}" height="20" length="20" alt="green">
+            {% elif slots.1.status == 1 %}
+                <img src="{% static "images/yellow.png" %}" height="20" length="20" alt="yellow">
+            {% elif slots.1.status == 2 %}
+                <img src="{% static "images/red.png" %}" height="20" length="20" alt="red">
+            {% endif %}
+  </div>
+  <div class="overlay" style="top: 710px;left:40%;">
+
+            {% if slots.2.status == 0 %}
+                <img src="{% static "images/green.png" %}" height="20" length="20" alt="green">
+            {% elif slots.2.status == 1 %}
+                <img src="{% static "images/yellow.png" %}" height="20" length="20" alt="yellow">
+            {% elif slots.2.status == 2 %}
+                <img src="{% static "images/red.png" %}" height="20" length="20" alt="red">
+            {% endif %}
+
+  </div>
+  <div class="overlay" style="top: 880px;left:40%;">
+            {% if slots.3.status == 0 %}
+                <img src="{% static "images/green.png" %}" height="20" length="20" alt="green">
+            {% elif slots.3.status == 1 %}
+                <img src="{% static "images/yellow.png" %}" height="20" length="20" alt="yellow">
+            {% elif slots.3.status == 2 %}
+                <img src="{% static "images/red.png" %}" height="20" length="20" alt="red">
+            {% endif %}
+  </div>
+  <div class="overlay" style="top: 1020px;left:40%;">
+            {% if slots.4.status == 0 %}
+                <img src="{% static "images/green.png" %}" height="20" length="20" alt="green">
+            {% elif slots.4.status == 1 %}
+                <img src="{% static "images/yellow.png" %}" height="20" length="20" alt="yellow">
+            {% elif slots.4.status == 2 %}
+                <img src="{% static "images/red.png" %}" height="20" length="20" alt="red">
+            {% endif %}
+  </div>
+  <div class="overlay" style="top: 1160px;left:40%;">
+            {% if slots.5.status == 0 %}
+                <img src="{% static "images/green.png" %}" height="20" length="20" alt="green">
+            {% elif slots.5.status == 1 %}
+                <img src="{% static "images/yellow.png" %}" height="20" length="20" alt="yellow">
+            {% elif slots.5.status == 2 %}
+                <img src="{% static "images/red.png" %}" height="20" length="20" alt="red">
+            {% endif %}
+  </div>
+
+
+<!-- right col -->
+  <div class="overlay" style="top: 420px;right:40%;">
+
+            {% if slots.6.status == 0 %}
+                <img src="{% static "images/green.png" %}" height="20" length="20" alt="green">
+            {% elif slots.6.status == 1 %}
+                <img src="{% static "images/yellow.png" %}" height="20" length="20" alt="yellow">
+            {% elif slots.6.status == 2 %}
+                <img src="{% static "images/red.png" %}" height="20" length="20" alt="red">
+            {% endif %}
+
+  </div>
+  <div class="overlay" style="top: 560px;right:40%;">
+            {% if slots.7.status == 0 %}
+                <img src="{% static "images/green.png" %}" height="20" length="20" alt="green">
+            {% elif slots.7.status == 1 %}
+                <img src="{% static "images/yellow.png" %}" height="20" length="20" alt="yellow">
+            {% elif slots.7.status == 2 %}
+                <img src="{% static "images/red.png" %}" height="20" length="20" alt="red">
+            {% endif %}
+  </div>
+  <div class="overlay" style="top: 710px;right:40%;">
+            {% if slots.8.status == 0 %}
+                <img src="{% static "images/green.png" %}" height="20" length="20" alt="green">
+            {% elif slots.8.status == 1 %}
+                <img src="{% static "images/yellow.png" %}" height="20" length="20" alt="yellow">
+            {% elif slots.8.status == 2 %}
+                <img src="{% static "images/red.png" %}" height="20" length="20" alt="red">
+            {% endif %}
+  </div>
+  <div class="overlay" style="top: 880px;right:40%;">
+            {% if slots.9.status == 0 %}
+                <img src="{% static "images/green.png" %}" height="20" length="20" alt="green">
+            {% elif slots.9.status == 1 %}
+                <img src="{% static "images/yellow.png" %}" height="20" length="20" alt="yellow">
+            {% elif slots.9.status == 2 %}
+                <img src="{% static "images/red.png" %}" height="20" length="20" alt="red">
+            {% endif %}
+  </div>
+  <div class="overlay" style="top: 1020px;right:40%;">
+            {% if slots.10.status == 0 %}
+                <img src="{% static "images/green.png" %}" height="20" length="20" alt="green">
+            {% elif slots.10.status == 1 %}
+                <img src="{% static "images/yellow.png" %}" height="20" length="20" alt="yellow">
+            {% elif slots.10.status == 2 %}
+                <img src="{% static "images/red.png" %}" height="20" length="20" alt="red">
+            {% endif %}
+  </div>
+  <div class="overlay" style="top: 1160px;right:40%;">
+            {% if slots.11.status == 0 %}
+                <img src="{% static "images/green.png" %}" height="20" length="20" alt="green">
+            {% elif slots.11.status == 1 %}
+                <img src="{% static "images/yellow.png" %}" height="20" length="20" alt="yellow">
+            {% elif slots.11.status == 2 %}
+                <img src="{% static "images/red.png" %}" height="20" length="20" alt="red">
+            {% endif %}
+  </div>
 </div>
-</div>
+
 </body>
 </html>
+

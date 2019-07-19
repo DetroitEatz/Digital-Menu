@@ -52,6 +52,8 @@
                             <img src="{% static "images/yellow.png" %}" height="20" length="20" alt="yellow">
                         {% elif slot.status == 2 %}
                             <img src="{% static "images/red.png" %}" height="20" length="20" alt="red">
+                        {% elif slot.status == 3 %}
+                            <img src="{% static "images/blue.png" %}" height="20" length="20" alt="red">
                         {% endif %}
                         {% if slot.image %}
                             <img src="/media/{{ slot.image }}" height="50" length="50">
@@ -84,6 +86,14 @@
                             <input type="hidden" value="{{ slot.id }}" name="slot"/>
                             <input type="hidden" value="2" name="status"/>
                             <button type="submit" id="button" class="btn btn-danger" class="button">Out</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form id="{{ menu.id  }}{{ slot.id }}">
+
+                            <input type="hidden" value="{{ slot.id }}" name="slot"/>
+                            <input type="hidden" value="3" name="status"/>
+                            <button type="submit" id="button" class="btn btn-primary" class="button">Other</button>
                         </form>
                     </td>
                 </tr>

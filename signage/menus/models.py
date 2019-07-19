@@ -32,5 +32,5 @@ class Slot(BaseModel):
 
     name = models.CharField(max_length=255, null=False, blank=False)
     image = models.FileField(upload_to='menus/images/', null=True, blank=True)
-    status = models.PositiveSmallIntegerField(default=1, validators=[MaxValueValidator(3), MinValueValidator(1)]) # 1 = good, 2 = running low 3 = I'm out
+    status = models.PositiveSmallIntegerField(default=1, validators=[MaxValueValidator(4), MinValueValidator(1)]) # 1 = good, 2 = running low 3 = I'm out, 4 = Other
     menu = models.ForeignKey(Menu, null=True, on_delete=models.SET_NULL)
